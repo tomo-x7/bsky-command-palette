@@ -1,0 +1,31 @@
+{
+	"name": "bsky-command-palette",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"build": "tsx ./build.ts",
+		"check": "biome check --write"
+	},
+	"license": "MIT",
+	"packageManager": "pnpm@10.24.0",
+	"devDependencies": {
+		"@biomejs/biome": "2.2.3",
+		"@types/firefox-webext-browser": "^143.0.0",
+		"esbuild": "^0.27.2",
+		"esbuild-plugin-solid": "^0.6.0",
+		"esbuild-plugin-tailwindcss": "^2.1.0",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3",
+		"zip-a-folder": "^4.0.4"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild"
+		]
+	},
+	"type": "module",
+	"dependencies": {
+		"solid-js": "^1.9.10",
+		"tailwindcss": "^4.1.18"
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"$schema": "https://json.schemastore.org/webextension.json",
+	"name": "Bluesky Command Palette",
+	"version": "1.0.0",
+	"manifest_version": 3,
+	"description": "bsky.appにコマンドパレットを追加する",
+	"permissions": [],
+	"icons": {
+		"128": "icons/128.png",
+		"48": "icons/48.png",
+		"16": "icons/16.png"
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://bsky.app/*"],
+			"js": ["main.js"],
+			"css": ["main.css"]
+		}
+	],
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "bsky_command_palette@tomo-x.bsky.social",
+			"strict_min_version": "109.0"
+		}
+	},
+	"commands": {
+		"open-palette": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+0",
+				"mac": "Command+Shift+0"
+			},
+			"description": "Open command palette"
+		}
+	},
+	"background": { "scripts": ["background.js"], "service_worker": "background.js" }
+}
