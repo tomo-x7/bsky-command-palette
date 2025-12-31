@@ -4,7 +4,6 @@ if (typeof browser === "undefined") {
 }
 
 browser.commands.onCommand.addListener((c, tab) => {
-	console.log(tab);
 	if (tab.url?.startsWith("https://bsky.app/") === false) return;
 	if (c === "open-palette") browser.tabs.sendMessage(tab.id!, { type: "open-palette" });
 });
@@ -16,3 +15,20 @@ browser.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
 		return true;
 	}
 });
+
+browser.action.onClicked.addListener((tab) => {
+	if (tab.url?.startsWith("https://bsky.app/") === false) return;
+	browser.tabs.sendMessage(tab.id!, { type: "open-palette" });
+});
+
+browser.runtime.onInstalled.addListener(()=>{
+	browser.contextMenus.create({
+		id: "open-palette",
+		title: "Open Command Palette",documentUrlPatterns: ["https://bsky.app/*"]
+	});
+	browser.contextMenus.onClicked.addListener((info, tab)=>{
+		if(info.menuItemId==="open-palette"&&tab?.id!=null){
+			browser.tabs.sendMessage(tab.id, { type: "open-palette" });
+		}
+	});
+})

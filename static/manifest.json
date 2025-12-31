@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"manifest_version": 3,
 	"description": "bsky.appにコマンドパレットを追加する",
-	"permissions": [],
+	"permissions": ["activeTab","contextMenus"],
 	"icons": {
 		"128": "icons/128.png",
 		"48": "icons/48.png",
@@ -22,20 +22,28 @@
 			"world": "MAIN"
 		}
 	],
-	"browser_specific_settings": {
-		"gecko": {
-			"id": "bsky_command_palette@tomo-x.bsky.social",
-			"strict_min_version": "109.0"
-		}
-	},
 	"commands": {
 		"open-palette": {
 			"suggested_key": {
 				"default": "Ctrl+Shift+0",
 				"mac": "Command+Shift+0"
 			},
-			"description": "Open command palette"
+			"description": "Open Command Palette"
 		}
 	},
-	"background": { "scripts": ["background.js"], "service_worker": "background.js" }
+	"action": {
+		"default_title": "Open Command Palette",
+		"default_icon": {
+			"16": "icons/16.png",
+			"48": "icons/48.png",
+			"128": "icons/128.png"
+		}
+	},
+	"background": { "scripts": ["background.js"], "service_worker": "background.js" },
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "bsky_command_palette@tomo-x.bsky.social",
+			"strict_min_version": "109.0"
+		}
+	}
 }
