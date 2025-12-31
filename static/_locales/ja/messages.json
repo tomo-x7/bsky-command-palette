@@ -1,0 +1,11 @@
+{
+	"extensionName": {
+		"message": "Bluesky コマンドパレット"
+	},
+	"extensionDescription": {
+		"message": "bsky.appにコマンドパレットを追加する"
+	},
+	"openCommandPalette": {
+		"message": "コマンドパレットを開く"
+	}
+}

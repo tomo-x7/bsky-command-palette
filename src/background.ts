@@ -21,14 +21,15 @@ browser.action.onClicked.addListener((tab) => {
 	browser.tabs.sendMessage(tab.id!, { type: "open-palette" });
 });
 
-browser.runtime.onInstalled.addListener(()=>{
+browser.runtime.onInstalled.addListener(() => {
 	browser.contextMenus.create({
 		id: "open-palette",
-		title: "Open Command Palette",documentUrlPatterns: ["https://bsky.app/*"]
+		title: browser.i18n.getMessage("openCommandPalette"),
+		documentUrlPatterns: ["https://bsky.app/*"],
 	});
-	browser.contextMenus.onClicked.addListener((info, tab)=>{
-		if(info.menuItemId==="open-palette"&&tab?.id!=null){
+	browser.contextMenus.onClicked.addListener((info, tab) => {
+		if (info.menuItemId === "open-palette" && tab?.id != null) {
 			browser.tabs.sendMessage(tab.id, { type: "open-palette" });
 		}
 	});
-})
+});

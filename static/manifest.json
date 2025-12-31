@@ -1,10 +1,11 @@
 {
 	"$schema": "https://json.schemastore.org/webextension.json",
-	"name": "Bluesky Command Palette",
+	"name": "__MSG_extensionName__",
 	"version": "1.0.0",
 	"manifest_version": 3,
-	"description": "bsky.appにコマンドパレットを追加する",
-	"permissions": ["activeTab","contextMenus"],
+	"default_locale": "en",
+	"description": "__MSG_extensionDescription__",
+	"permissions": ["activeTab", "contextMenus"],
 	"icons": {
 		"128": "icons/128.png",
 		"48": "icons/48.png",
@@ -28,11 +29,11 @@
 				"default": "Ctrl+Shift+0",
 				"mac": "Command+Shift+0"
 			},
-			"description": "Open Command Palette"
+			"description": "__MSG_openCommandPalette__"
 		}
 	},
 	"action": {
-		"default_title": "Open Command Palette",
+		"default_title": "__MSG_openCommandPalette__",
 		"default_icon": {
 			"16": "icons/16.png",
 			"48": "icons/48.png",
