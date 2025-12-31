@@ -9,10 +9,10 @@ browser.commands.onCommand.addListener((c, tab) => {
 	if (c === "open-palette") browser.tabs.sendMessage(tab.id!, { type: "open-palette" });
 });
 
-browser.runtime.onMessage.addListener(async (msg, sender,sendResponse) => {
+browser.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
 	if (msg.type === "edit-shortcut") {
-		await browser.commands.openShortcutSettings()
+		await browser.commands.openShortcutSettings();
 		sendResponse();
-		return;
+		return true;
 	}
 });
