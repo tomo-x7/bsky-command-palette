@@ -4,21 +4,25 @@ if (typeof browser === "undefined") {
 }
 
 browser.commands.onCommand.addListener((c, tab) => {
-	if (tab.url?.startsWith("https://bsky.app/") === false) return;
-	if (c === "open-palette") browser.tabs.sendMessage(tab.id!, { type: "open-palette" });
+	if (tab.url?.startsWith("https://bsky.app/") === false || tab.id == null) return;
+	if (c === "open-palette") browser.tabs.sendMessage(tab.id, { type: "open-palette" });
 });
 
 browser.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
 	if (msg.type === "edit-shortcut") {
-		await browser.commands.openShortcutSettings();
+		if (typeof browser.commands.openShortcutSettings === "function") {
+			await browser.commands.openShortcutSettings();
+		} else {
+			await browser.tabs.create({ url: "chrome://extensions/shortcuts" });
+		}
 		sendResponse();
 		return true;
 	}
 });
 
 browser.action.onClicked.addListener((tab) => {
-	if (tab.url?.startsWith("https://bsky.app/") === false) return;
-	browser.tabs.sendMessage(tab.id!, { type: "open-palette" });
+	if (tab.url?.startsWith("https://bsky.app/") === false || tab.id == null) return;
+	browser.tabs.sendMessage(tab.id, { type: "open-palette" });
 });
 
 browser.runtime.onInstalled.addListener(() => {

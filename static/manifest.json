@@ -44,7 +44,7 @@
 	"browser_specific_settings": {
 		"gecko": {
 			"id": "bsky_command_palette@tomo-x.bsky.social",
-			"strict_min_version": "109.0"
+			"strict_min_version": "137.0"
 		}
 	}
 }
