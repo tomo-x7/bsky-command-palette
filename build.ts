@@ -7,12 +7,13 @@ import { zip } from "zip-a-folder";
 
 await cp("static", "dist", { recursive: true });
 await build({
-	entryPoints: ["src/main.tsx", "src/background.ts"],
+	entryPoints: ["src/main.tsx", "src/background.ts", "src/inject.ts"],
 	bundle: true,
 	// outfile: "static/main.js",
 	tsconfig: "tsconfig.json",
 	outdir: "dist",
 	plugins: [solidPlugin(), tailwindPlugin()],
+	treeShaking: true,
 });
 
 await zip("dist", "bsky-command-palette.zip");

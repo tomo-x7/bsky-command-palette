@@ -15,6 +15,11 @@
 			"matches": ["https://bsky.app/*"],
 			"js": ["main.js"],
 			"css": ["main.css"]
+		},
+		{
+			"matches": ["https://bsky.app/*"],
+			"js": ["inject.js"],
+			"world": "MAIN"
 		}
 	],
 	"browser_specific_settings": {
